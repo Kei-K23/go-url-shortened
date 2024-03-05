@@ -29,7 +29,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /urls", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintln(w, "GET users request")
+		handler.GetURLs(w, r, db)
 	})
 
 	mux.HandleFunc("POST /urls", func(w http.ResponseWriter, r *http.Request) {

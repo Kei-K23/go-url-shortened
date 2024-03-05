@@ -6,7 +6,6 @@ import (
 	"log"
 	"net/http"
 	"net/url"
-	"time"
 
 	"github.com/Kei-K23/go-url-shortened/lib"
 	"github.com/Kei-K23/go-url-shortened/models"
@@ -65,9 +64,8 @@ func CreateShortURL(w http.ResponseWriter, r *http.Request, db *gorm.DB) {
 	}
 
 	url := &models.Url{
-        LongUrl:   originalUrl,
-        ShortUrl:  newUrl,
-        CreatedAt: time.Now(),
+        OriginalUrl: originalUrl,
+        ShortenedUrl: newUrl,
     }
 
 	result := db.Create(url)
